@@ -1,0 +1,85 @@
+{
+  "name": "video-embedder",
+  "displayName": "Video Embedder",
+  "description": "Вставляет и просматривает видео по ссылкам прямо в VS Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "publisher": "video-embedder",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:video-embedder.insertVideo",
+    "onCommand:video-embedder.insertVideoFromClipboard",
+    "onCommand:video-embedder.previewVideo",
+    "onCommand:video-embedder.previewSelectedVideo"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "video-embedder.insertVideo",
+        "title": "Вставить видео по ссылке",
+        "category": "Video Embedder"
+      },
+      {
+        "command": "video-embedder.insertVideoFromClipboard",
+        "title": "Вставить видео из буфера обмена",
+        "category": "Video Embedder"
+      },
+      {
+        "command": "video-embedder.previewVideo",
+        "title": "📺 Предпросмотр видео в файле",
+        "category": "Video Embedder"
+      },
+      {
+        "command": "video-embedder.previewSelectedVideo",
+        "title": "📺 Предпросмотр выделенного видео",
+        "category": "Video Embedder"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "video-embedder.insertVideo",
+        "key": "ctrl+alt+v",
+        "mac": "cmd+alt+v",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "video-embedder.previewVideo",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "video-embedder.previewSelectedVideo",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ],
+      "command-palette": [
+        {
+          "command": "video-embedder.insertVideo",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "video-embedder.insertVideoFromClipboard",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "video-embedder.previewVideo",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "video-embedder.previewSelectedVideo",
+          "when": "editorTextFocus && editorHasSelection"
+        }
+      ]
+    }
+  }
+}
